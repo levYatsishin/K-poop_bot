@@ -17,6 +17,8 @@ import random
 from sql_interface import db_select, db_create_new_row, db_update, db_row_exists, db_select_column
 from sql_interface import db_path
 
+root_dir = os.environ["root_dir"]
+#   /root/telegram-bots/kpoop_bot/ – server; "" – mine
 photo_dir = "bands_photos"
 API_TOKEN = os.environ["API_TOKEN"]
 WEBHOOK_PATH = ""
@@ -154,7 +156,7 @@ async def get_statistics(message: types.Message):
             await bot.send_message(message.chat.id, users, reply_markup=bands_keyboard)
     else:
         reply = generate_good_message()
-        path = f'{photo_dir}/cats/other'
+        path = f'{root_dir}{photo_dir}/cats/other'
         filename = real_choice(os.listdir(path))
         with open(f"{path}/{filename}", 'rb') as photo:
             await message.answer_photo(photo, caption=reply)
@@ -201,7 +203,7 @@ async def choose_band(message: types.Message, state: FSMContext):
         await state.update_data(keyboard=keyboard)
 
         #   send photo
-        path = f'{photo_dir}/{user_data["current_learning_band"]}/{member.lower().replace(" ", "_")}'
+        path = f'{root_dir}{photo_dir}/{user_data["current_learning_band"]}/{member.lower().replace(" ", "_")}'
         filename = real_choice(os.listdir(path))
         with open(f"{path}/{filename}", 'rb') as photo:
             await message.answer_photo(photo, caption='как ты думашь, кто это?', reply_markup=keyboard)
@@ -250,7 +252,7 @@ async def start(message: types.Message, state: FSMContext):
         await state.update_data(current_learning_member=member)
         await state.update_data(keyboard=keyboard)
 
-        path = f'{photo_dir}/{user_data["current_learning_band"]}/{member.lower().replace(" ", "_")}'
+        path = f'{root_dir}{photo_dir}/{user_data["current_learning_band"]}/{member.lower().replace(" ", "_")}'
         filename = real_choice(os.listdir(path))
         with open(f"{path}/{filename}", 'rb') as photo:
             await message.answer_photo(photo, caption='как ты думашь, кто это?', reply_markup=keyboard)
