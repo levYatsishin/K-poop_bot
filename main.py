@@ -152,7 +152,7 @@ async def get_statistics(message: types.Message):
             users = "\n".join([f"{x[0][0]} – @{x[1][0]} {x[2][0]}" if x[1][0] != "None"
                                else f"{x[0][0]} – no username {x[2][0]}"
                                for x in list(zip(names, usernames, data))])
-            await bot.send_message(message.chat.id, users, reply_markup=bands_keyboard)
+            await bot.send_message(message.chat.id, users)
     else:
         reply = generate_good_message()
         path = f'{photo_dir}/cats/other'
