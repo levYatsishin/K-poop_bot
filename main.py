@@ -150,7 +150,7 @@ async def get_statistics(message: types.Message):
             usernames = db_select_column("user_username")
             data = db_select_column("last_data")
             users = "\n".join([f"{x[0][0]} – @{x[1][0]} {x[2][0]}" if x[1][0] != "None"
-                               else f"{x[0][0]} – no username {x[2][0]}"
+                               else f"{x[0][0]} – noввв username {x[2][0]}"
                                for x in list(zip(names, usernames, data))])
             await bot.send_message(message.chat.id, users)
     else:
