@@ -119,7 +119,7 @@ def generate_statistics(user_id):
 
     for band in bands:
         members = "\n".join([f"☆{map_name(x[0])}: {x[1][1]} из {x[1][0]}"
-                             if (int(x[1][0] * 0.7) <= x[1][1]) and (x[1][0] >= 10)
+                             if (round(x[1][1] * 0.4) >= x[1][0]-x[1][1]) and (x[1][0] >= 10)
                              else
                              f"{map_name(x[0])}: {x[1][1]} из {x[1][0]}"
                              for x in json.loads(db_select(user_id, band.lower().replace(" ", "_"))).items()])
