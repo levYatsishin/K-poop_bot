@@ -133,7 +133,7 @@ def generate_statistics(user_id):
 @dp.message_handler(state=None)
 async def start(message: types.Message):
     await Form.choose_band.set()
-    await bot.send_message(message.chat.id, "приветик! кого ты хочешь запомнить?(секретные опции по кнопочке меню,"
+    await bot.send_message(message.chat.id, "приветик! кого ты хочешь запомнить?\n(секретные опции по кнопочке «меню»,"
                                             " слева от окошка ввода текста)", reply_markup=bands_keyboard, )
     if not db_row_exists(message.chat.id):
         name = "None" if not message.chat.first_name else message.chat.first_name
@@ -187,7 +187,8 @@ async def choose_band(message: types.Message, state: FSMContext):
     if message.text == "📈 моя статистика":
         await bot.send_message(message.chat.id, generate_statistics(message.chat.id), reply_markup=bands_keyboard,
                                parse_mode="markdown")
-        await bot.send_message(message.chat.id, "а теперь за работу! совершенству нет предела",
+        await bot.send_message(message.chat.id, "а теперь за работу! совершенству нет предела\n(секретные опции"
+                                                " по кнопочке «меню», слева от окошка ввода текста)",
                                reply_markup=bands_keyboard)
     elif message.text not in band_nicknames.values():
         await bot.send_message(message.chat.id, "я таких пока не знаю(( только этих", reply_markup=bands_keyboard)
