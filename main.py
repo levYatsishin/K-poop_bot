@@ -221,7 +221,7 @@ async def start(message: types.Message, state: FSMContext):
     band = user_data["current_learning_band"]
 
     if message.text == "/spasibo":
-        await bot.send_message(message.chat.id, f"чтобы написать что-то милое автору, сначала нажми на ктопочку выйти."
+        await bot.send_message(message.chat.id, f"чтобы написать что-то милое автору, сначала нажми на кнопочку выйти."
                                                 f" а пока продолжай угадывать красавчика выше", reply_markup=keyboard)
 
     #   exit to choose band
