@@ -133,7 +133,8 @@ def generate_statistics(user_id):
 @dp.message_handler(state=None)
 async def start(message: types.Message):
     await Form.choose_band.set()
-    await bot.send_message(message.chat.id, "приветик! кого ты хочешь запомнить?", reply_markup=bands_keyboard, )
+    await bot.send_message(message.chat.id, "приветик! кого ты хочешь запомнить?(секретные опции по кнопочке меню,"
+                                            " слева от окошка ввода текста)", reply_markup=bands_keyboard, )
     if not db_row_exists(message.chat.id):
         name = "None" if not message.chat.first_name else message.chat.first_name
         username = "None" if not message.chat.username else message.chat.username
@@ -188,7 +189,6 @@ async def choose_band(message: types.Message, state: FSMContext):
                                parse_mode="markdown")
         await bot.send_message(message.chat.id, "а теперь за работу! совершенству нет предела",
                                reply_markup=bands_keyboard)
-
     elif message.text not in band_nicknames.values():
         await bot.send_message(message.chat.id, "я таких пока не знаю(( только этих", reply_markup=bands_keyboard)
     else:
@@ -219,8 +219,12 @@ async def start(message: types.Message, state: FSMContext):
     member = user_data["current_learning_member"]
     band = user_data["current_learning_band"]
 
+    if message.text == "/spasibo":
+        await bot.send_message(message.chat.id, f"чтобы написать что-то милое автору, сначала нажми на ктопочку выйти."
+                                                f" а пока продолжай угадывать красавчика выше", reply_markup=keyboard)
+
     #   exit to choose band
-    if message.text == 'выйти':
+    elif message.text == 'выйти':
         await bot.send_message(message.chat.id, "окей, давай запоминать других!", reply_markup=bands_keyboard)
         await Form.choose_band.set()
 
