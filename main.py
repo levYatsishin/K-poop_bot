@@ -21,8 +21,8 @@ root_dir = os.environ["root_dir"]
 photo_dir = f"{root_dir}bands_photos"
 API_TOKEN = os.environ["API_TOKEN"]
 WEBHOOK_PATH = ""
-WEBHOOK_URL = subprocess.check_output("curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url",
-                                      shell=True).decode('utf-8')[:-1]
+WEBHOOK_URL = subprocess.check_output('curl -s localhost:4040/api/tunnels/cute_k_poop_bot | jq -r .public_url', shell=True).decode('utf-8')[:-1]
+
 WEBAPP_HOST = '127.0.0.1'
 WEBAPP_PORT = 5000
 
