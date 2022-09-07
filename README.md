@@ -3,6 +3,6 @@
     <h1>K-poop bot</h1>
 </div>
 
-Telegram Bot that helps to build the intuition for recognizing boys in popular boys-bands. <br/>
-⚙️ Implemented asynchronously with aiogram and webhook + sqlite <br/>
+Telegram Bot that helps to build the intuition for recognizing boys in popular boys-bands. <br/><br/>
+⚙️ Implemented asynchronously with aiogram and webhook + sqlite <br/><br/>
 **[Telegram](https://t.me/cutekpoop_bot)**
