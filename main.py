@@ -19,7 +19,7 @@ from sql_interface import db_path
 
 root_dir = os.environ["root_dir"]
 photo_dir = f"{root_dir}bands_photos"
-API_TOKEN = os.environ["API_TOKEN"]
+API_TOKEN = os.environ["API_TOKEN_kpoop"]
 WEBHOOK_PATH = ""
 WEBHOOK_URL = subprocess.check_output('curl -s localhost:4040/api/tunnels/cute_k_poop_bot | jq -r .public_url', shell=True).decode('utf-8')[:-1]
 
