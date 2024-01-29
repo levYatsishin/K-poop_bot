@@ -5,4 +5,5 @@
 
 Telegram Bot that helps to build the intuition for recognizing boys in popular boys-bands. <br/><br/>
 ⚙️ Implemented asynchronously with aiogram and webhook + sqlite <br/><br/>
-**[Telegram](https://t.me/cutekpoop_bot)**
+
+**01.01.2024 – Down**
